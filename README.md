@@ -8,11 +8,11 @@ Registering users / roles / assigning permissions
   * A user can adopt one or more roles
   * There is a hierarchy of roles.
   * By default there are two roles:
-
-
-
-* Employee and Manager:
+   * Employee and Manager
   * Any role will also be an Employee.
+
+
+
   * Users in a role have certain permissions
   * The permissions can be: read, add, update and delete
   * By default a Manager can perform all the operations
