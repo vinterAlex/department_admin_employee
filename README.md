@@ -1,6 +1,8 @@
 # department_admin_employee
 Registering users / roles / assigning permissions
 
+- still need to work on the project to be able to get more features on it and to be stable. I'm having some issues with listing the users vs registering them. Need to re-create the models individually and update the context.
+
 **Requirement:**
 
 * Consider the following :
