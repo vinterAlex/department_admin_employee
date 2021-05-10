@@ -28,3 +28,14 @@ Registering users / roles / assigning permissions
   * Determine the permissions of a user based on her roles.
   * Notify the Manager that a user has been registered in their department
 
+** how I used it on a new solution:
+- clean solution
+- build solution
+-  Package Manager Console -> update-database
+
+* TEST QUESTIONS:
+* Could you explain which design patterns have you used and what is the purpose of them? 
+  * Answer: As a design pattern I'd use the "Builder", because builder doesn’t require products to have a common interface. That makes it possible to produce different products using the same construction process.
+
+* If we wanted to persist that information in any storage, could you please explain which type of storage you would choose and how it looks?
+  * Answer: I'd use Cloud AWS, despite the cost it's fast.
