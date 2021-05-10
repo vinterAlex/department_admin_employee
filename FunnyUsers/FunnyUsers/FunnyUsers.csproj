@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-FunnyUsers-7C3FAE5C-7C2E-4F0E-810F-3FE539BAC1CB</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20210509101237_ExtendIdentityUser.cs" />
+    <Compile Remove="Data\Migrations\20210509101237_ExtendIdentityUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210509102357_ExtendIdentityUser.cs" />
+    <Compile Remove="Data\Migrations\20210509102357_ExtendIdentityUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210509103759_ExtendIdentityUser.cs" />
+    <Compile Remove="Data\Migrations\20210509103759_ExtendIdentityUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210509104033_ExtendIdentityUser.cs" />
+    <Compile Remove="Data\Migrations\20210509104033_ExtendIdentityUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210509104432_ExtendIdentityUser.cs" />
+    <Compile Remove="Data\Migrations\20210509104432_ExtendIdentityUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210509105508_clear.cs" />
+    <Compile Remove="Data\Migrations\20210509105508_clear.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210509105716_ExtendIdentity_Department.cs" />
+    <Compile Remove="Data\Migrations\20210509105716_ExtendIdentity_Department.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210509110612_ExtendIdentity_Department.cs" />
+    <Compile Remove="Data\Migrations\20210509110612_ExtendIdentity_Department.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.13">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ApplicationUser>
+
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Department</td>
+            <td>Role</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+        <tr>
+            <td>@role.UserName</td>
+            <td>@role.Email</td>
+            <td>@role.Department</td>
+            
+        </tr>
+
+        }
+    </tbody>
+</table>  
