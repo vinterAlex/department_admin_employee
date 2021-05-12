@@ -1,5 +1,6 @@
 ﻿using FunnyUsers.Areas.Identity.Pages.Account;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,11 @@ namespace FunnyUsers.Models
 
         public string Role { get; set; }
 
+        
 
+        //public IEnumerable<SelectListItem> rolesList { get; set; }
+        
+        
 
 
 

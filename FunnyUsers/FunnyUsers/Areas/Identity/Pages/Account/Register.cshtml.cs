@@ -91,30 +91,40 @@ namespace FunnyUsers.Areas.Identity.Pages.Account
         {
             returnUrl = returnUrl ?? Url.Content("~/");
             var role = _roleManager.FindByIdAsync(Input.Role).Result;
+            //var roles = _roleManager.Roles.ToList();
+            //var role = roles.Where(j => j.Id == _roleManager.Roles.FirstOrDefault().Id).Select(a => a.Name).FirstOrDefault();
+
+
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser {
-                    UserName = Input.Email,
-                    Email = Input.Email,
-                    
-                    
-                    
-                };
-
-                //var user = new ApplicationUser()
-                //{
+                //var user = new IdentityUser {
                 //    UserName = Input.Email,
                 //    Email = Input.Email,
-                //
+                //    
+                //    
+                //    
                 //};
-                //var result = await _userManager.CreateAsync(user, Input.Password);
+
+                var user = new ApplicationUser()
+                {
+                    UserName = Input.Email,
+                    Email = Input.Email,
+                    Department = Input.Department,
+                    Role = Input.Role
+                    
+
+                
+                };
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                //var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-                    await _userManager.AddToRoleAsync(user, role.Name);
-
+                    await _userManager.AddToRoleAsync(user, role.NormalizedName);
+                    
+                    
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(

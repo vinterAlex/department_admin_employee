@@ -15,6 +15,7 @@ namespace FunnyUsers.Data
         {
         }
         public DbSet<ApplicationUser> ApplicationUsers{ get; set; } 
+        public DbSet<FunnyUsers.Models.CreateUserModel> CreateUserModel { get; set; }
         //public DbSet<IdentityUser> IdentityUser { get; set; }
     }
 
