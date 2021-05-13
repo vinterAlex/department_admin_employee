@@ -8847,11 +8847,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Dev\\FunnyUsers\\FunnyUsers\\FunnyUsers\\FunnyUsers.csproj",
+      "projectUniqueName": "E:\\Dev\\UersManagement_Application\\FunnyUsers\\FunnyUsers\\FunnyUsers.csproj",
       "projectName": "FunnyUsers",
-      "projectPath": "E:\\Dev\\FunnyUsers\\FunnyUsers\\FunnyUsers\\FunnyUsers.csproj",
+      "projectPath": "E:\\Dev\\UersManagement_Application\\FunnyUsers\\FunnyUsers\\FunnyUsers.csproj",
       "packagesPath": "C:\\Users\\AlexV\\.nuget\\packages\\",
-      "outputPath": "E:\\Dev\\FunnyUsers\\FunnyUsers\\FunnyUsers\\obj\\",
+      "outputPath": "E:\\Dev\\UersManagement_Application\\FunnyUsers\\FunnyUsers\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\AlexV\\AppData\\Roaming\\NuGet\\NuGet.Config",
