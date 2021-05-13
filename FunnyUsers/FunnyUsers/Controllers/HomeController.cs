@@ -35,7 +35,7 @@ namespace FunnyUsers.Controllers
         {
             
 
-           return View(_application.Users.ToList());
+           return View();
            
 
         }

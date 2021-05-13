@@ -1,4 +1,6 @@
 ﻿using FunnyUsers.Areas.Identity.Pages.Account;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,6 +12,8 @@ namespace FunnyUsers.Models
     public class CreateUserModel 
     {
 
+ 
+        
         [Required]
         [Display(Name = "Name")]
         public string Name { get; set; }
@@ -36,6 +40,7 @@ namespace FunnyUsers.Models
         public string ConfirmPassword { get; set; }
 
         public string Role { get; set; }
-
+        
+        //public List<SelectListItem> SelectedRoles { get; set; }
     }
 }

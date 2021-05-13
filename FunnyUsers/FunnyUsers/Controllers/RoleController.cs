@@ -22,8 +22,12 @@ namespace FunnyUsers.Controllers
             public IActionResult Index()
             {
                 var roles = roleManager.Roles.ToList();
+                
+
                 return View(roles);
             }
+
+
 
             [Authorize(Roles = "Manager,Administrator")]
             //[Authorize(Policy ="readpolicy")]

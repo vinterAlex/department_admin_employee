@@ -1,8 +1,10 @@
-﻿using FunnyUsers.Data;
+﻿using FunnyUsers.Areas.Identity.Pages.Account;
+using FunnyUsers.Data;
 using FunnyUsers.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,26 +13,33 @@ namespace FunnyUsers.Controllers
 {
     public class UsersController : Controller
     {
+        //UserManager<IdentityUser> _userManager;
         UserManager<IdentityUser> _userManager;
+        SignInManager<IdentityUser> _signInManager;
         ApplicationDbContext _db;
         RoleManager<IdentityRole> _roleManager;
-        
+        //ApplicationUser _appUser;
 
-        public UsersController(UserManager<IdentityUser> userManager,ApplicationDbContext db, RoleManager<IdentityRole> roleManager)
+
+          public UsersController(UserManager<IdentityUser> userManager,SignInManager<IdentityUser> signInManager, ApplicationDbContext db,RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
             _db = db;
             _roleManager = roleManager;
-            
         }
+        //public UsersController(UserManager<IdentityUser> userManager,ApplicationDbContext db, RoleManager<IdentityRole> roleManager,ApplicationUser appUser)
+        //{
+        //    _userManager = userManager;
+        //    _db = db;
+        //    _roleManager = roleManager;
+        //    //_appUser = appUser;
+        //    
+        //}
 
         
 
-        //public async Task<ActionResult> ListUser()
-        //{
-        //    
-        // 
-        //}
+
 
 
         public IActionResult Index()
@@ -39,13 +48,7 @@ namespace FunnyUsers.Controllers
         }
 
       
-        public IActionResult Create()
-        {
-        
-        
-        
-            return View();
-        }
+
 
   
 
@@ -60,38 +63,14 @@ namespace FunnyUsers.Controllers
 
 
 
-        //
-        // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(CreateUserModel model)
+
+
+        
+        public async Task<ActionResult> Create()
         {
-            if (ModelState.IsValid)
-            {
+            return View();
+            //return View("Identity/Account/Register");
 
-                var user = new ApplicationUser() { UserName = model.Name };
-
-                var result = await _userManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
-                {
-                    await _userManager.AddToRoleAsync(user, model.Role);
-                    
-                   // await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    var allRoles = _roleManager.Roles.ToList();
-
-                    ViewBag.Roles = allRoles;
-                    
-                }
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
         }
 
         [HttpPost]
@@ -125,11 +104,7 @@ namespace FunnyUsers.Controllers
             return View(userToEdit);
         }
 
-        public async Task<IActionResult> Delete(string userId)
-        {
 
 
-            return View();
-        }
     }
 }
