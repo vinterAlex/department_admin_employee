@@ -12,17 +12,18 @@ namespace FunnyUsers.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        
+
 
         // new column in AspNetusers table - migration
         public string Department { get; set; }
 
         public string Role { get; set; }
 
-        
+        //public IList<string> Roles { get; set; }
 
         //public IEnumerable<SelectListItem> rolesList { get; set; }
         
+
         
 
 

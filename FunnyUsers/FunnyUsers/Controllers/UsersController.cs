@@ -18,7 +18,8 @@ namespace FunnyUsers.Controllers
         SignInManager<IdentityUser> _signInManager;
         ApplicationDbContext _db;
         RoleManager<IdentityRole> _roleManager;
-        //ApplicationUser _appUser;
+        //public ApplicationUser _appUser { get; set; }
+        public CreateUserModel createModel { get; set; }
 
 
         public UsersController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext db, RoleManager<IdentityRole> roleManager)
@@ -31,10 +32,6 @@ namespace FunnyUsers.Controllers
 
 
 
-
-
-
-
         public IActionResult Index()
         {
             return View(_db.ApplicationUsers.ToList()); //works fine
@@ -44,6 +41,7 @@ namespace FunnyUsers.Controllers
 
         public async Task<ActionResult> Create()
         {
+            //this uses a redirect from View to Register.cshtml from Identity area
             return View();
 
 
@@ -53,40 +51,65 @@ namespace FunnyUsers.Controllers
 
 
 
-        public IActionResult Edit(string userID) // need to make it string due to IdentityUser<string>
-        {
-
-            var user = _db.ApplicationUsers.Where(u => u.Id == userID).FirstOrDefault();
-           // var user = _db.ApplicationUsers.ToList();
-            return View(user);
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Edit(ApplicationUser userModel, string id)
-        {
-
-            return RedirectToAction("Index");
-        }
-
-        //public async Task<ActionResult> DeleteUser(string id)
+        //public IActionResult Edit(string userID) // need to make it string due to IdentityUser<string>
         //{
-        //    var user = _db.ApplicationUsers.Where(u => u.Id == id).FirstOrDefault();
-        //    return RedirectToAction();
+        //
+        //    var user = _db.ApplicationUsers.Where(u => u.Id == userID).FirstOrDefault();
+        //   // var user = _db.ApplicationUsers.ToList();
+        //    return View(user);
         //}
 
-        [HttpPost]
-        public async Task<ActionResult>DeleteUser(string userId)
+
+        [HttpGet]
+        public async Task<ActionResult> Edit(string id)
         {
-            var user = _db.ApplicationUsers.ToList().FirstOrDefault(); //works but it deletes only the first one...
-            //var user = _db.ApplicationUsers.ToList().FirstOrDefault(x=>x.Id==userId);//.Where(u => u.Id == userId);
-            var result = await _userManager.DeleteAsync(user);
+            var userToEdit = _db.ApplicationUsers.Where(p => p.Id == id).FirstOrDefault();
+            
+            var user = new ApplicationUser()
+            {
+                UserName = userToEdit.UserName,
+                Email = userToEdit.Email,
+                Department = userToEdit.Department,
+                Role = userToEdit.Role
+            };
+
+            return View(user);
+        } //works, leave it that way
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(ApplicationUser model)
+        {
+            var userToEdit = _db.ApplicationUsers.Where(p => p.Id == model.Id).FirstOrDefault();
+
+            userToEdit.UserName = model.UserName;
+            userToEdit.Email = model.Email;
+            userToEdit.Department = model.Department;
+            userToEdit.Role = model.Role;
+
+            var result = await _userManager.UpdateAsync(userToEdit);
+
+
             if (result.Succeeded)
             {
-                return RedirectToAction("Index");
-
+                return RedirectToAction("Index", _db.ApplicationUsers.ToList());
             }
 
-            return View("Index");
+
+
+            return View(model);
+            //return RedirectToAction("Index", _db.ApplicationUsers.ToList());
+        }
+
+        /* WORKS FINE BUT NEED TO EDIT THE "EDIT" VIEW as it not takes the POST, it's taking it only if you INPUT it manually in URL*/
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteUser(string id)
+        {
+            var user = _db.ApplicationUsers.Where(p => p.Id == id).FirstOrDefault();
+            
+            var result = await _userManager.DeleteAsync(user);
+
+            return View("Index", _db.ApplicationUsers.ToList());
 
 
         }
