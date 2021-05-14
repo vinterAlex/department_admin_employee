@@ -79,7 +79,7 @@ namespace FunnyUsers.Areas.Identity.Pages.Account
 
                 var user = new ApplicationUser()
                 {
-                    UserName = Input.Email,
+                    UserName = Input.Name,
                     Email = Input.Email,
                     Department = Input.Department,
                     Role = Input.Role

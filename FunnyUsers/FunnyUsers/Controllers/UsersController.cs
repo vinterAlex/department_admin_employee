@@ -64,16 +64,16 @@ namespace FunnyUsers.Controllers
         public async Task<ActionResult> Edit(string id)
         {
             var userToEdit = _db.ApplicationUsers.Where(p => p.Id == id).FirstOrDefault();
-            
-            var user = new ApplicationUser()
-            {
-                UserName = userToEdit.UserName,
-                Email = userToEdit.Email,
-                Department = userToEdit.Department,
-                Role = userToEdit.Role
-            };
-
-            return View(user);
+            return View(userToEdit);
+            //var user = new ApplicationUser()
+            //{
+            //    UserName = userToEdit.UserName,
+            //    Email = userToEdit.Email,
+            //    Department = userToEdit.Department,
+            //    Role = userToEdit.Role
+            //};
+            //
+            //return View(user);
         } //works, leave it that way
 
         [HttpPost]
